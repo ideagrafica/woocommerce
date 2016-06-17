@@ -5,10 +5,16 @@ Sviluppato da: Marco De Sangro aka ideaGrafica*/
  */
 function wc_diff_rate_for_user() {
 
+
 	// check for the user role
 	if ( is_user_logged_in() && current_user_can( 'customer' ) ) {
 
+
+		// set the customer object to have no VAT
+		WC()->customer->is_vat_exempt = true;
 	}
+	else {WC()->customer->is_vat_exempt = true;}
+
 
 }
 add_action( 'template_redirect', 'wc_diff_rate_for_user', 1 );
