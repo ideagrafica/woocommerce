@@ -5,16 +5,12 @@ Sviluppato da: Marco De Sangro aka ideaGrafica*/
  */
 function wc_diff_rate_for_user() {
 
-
 	// check for the user role
 	if ( is_user_logged_in() && current_user_can( 'customer' ) ) {
-
 
 		// set the customer object to have no VAT
 		WC()->customer->is_vat_exempt = true;
 	}
-	else {WC()->customer->is_vat_exempt = true;}
-
 
 }
 add_action( 'template_redirect', 'wc_diff_rate_for_user', 1 );
@@ -30,7 +26,6 @@ function wc_get_variation_prices_hash_filter( $hash, $item, $display ) {
 		// clear key 2, which is where taxes are
 		$hash['2'] = array();
 	}
-	else {$hash['2'] = array();}
 
 	// return the hash
 	return $hash;
@@ -48,7 +43,6 @@ function wc_get_price_suffix_filter( $price_display_suffix, $item ) {
 		// return blank if it matches
 		return '';
 	}
-	else {return '';}
 
 	// return if unmatched
 	return $price_display_suffix;
